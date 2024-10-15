@@ -38,6 +38,9 @@ ENV_CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast=str, default="")
 for origin in ENV_CORS_ALLOWED_ORIGINS.split(","):
     CORS_ALLOWED_ORIGINS.append(f"{origin}".strip().lower())
 
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -101,6 +104,17 @@ DATABASES = {
          'NAME': BASE_DIR / 'db.sqlite3',
      }
  }
+
+DATABASE_URL = config("DATABASE_URL", cast=str, default="")
+
+if DATABASE_URL != "":
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=300,
+            conn_health_checks=True
+        )
+    }
 
 
 # Password validation
