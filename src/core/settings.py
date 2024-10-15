@@ -22,7 +22,7 @@ SECRET_KEY = config("DJANGO_SECRET_KEY", cast=str)
 DEBUG = config("DJANGO_DEBUG", cast=bool, default=False)
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.railway.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://basedatastorev1-production.up.railway.app', 'basedatastorev1-production.up.railway.app']
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
 
